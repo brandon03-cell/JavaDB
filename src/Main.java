@@ -10,10 +10,10 @@ public class Main {
             //stmt.execute(sql);
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                int id = rs.getInt("id_alumno");
+                //int id = rs.getInt("id_alumno");
                 String nombre = rs.getString("nombre");
                 int edad = rs.getInt("edad");
-                System.out.println(id + " " + nombre + " " + edad);
+                System.out.println(nombre + " " + edad);
             }
             System.out.println("Todo correcto chaval");
         } catch (SQLException e) {
