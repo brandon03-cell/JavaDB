@@ -11,8 +11,8 @@ public class Main {
             String sql = "insert into alumnos (nombre, edad)" +
                     "values (?, 0)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-
-            stmt.executeUpdate(sql);
+            pstmt.setString(1, nombreusuario);
+            pstmt.executeUpdate();
             /*while (rs.next()) {
                 int id = rs.getInt("id_alumno");
                 String nombre = rs.getString("nombre");
