@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,10 +6,16 @@ public class Main {
 
         try (Connection conn = DriverManager.getConnection(url)) {
             Statement stmt = conn.createStatement();
-
-            String sql = "insert into alumnos (nombre, edad)" +
-                    "values ('Pepito' 30)";
-            stmt.execute(sql);
+            String sql = "select * from alumnos where nombre like 'P%'";
+            //stmt.execute(sql);
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                int id = rs.getInt("id_alumno");
+                String nombre = rs.getString("nombre");
+                int edad = rs.getInt("edad");
+                System.out.println(id + " " + nombre + " " + edad);
+            }
+            System.out.println("Todo correcto chaval");
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
         }
