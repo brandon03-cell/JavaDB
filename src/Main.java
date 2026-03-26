@@ -8,10 +8,10 @@ public class Main {
         try (Connection conn = DriverManager.getConnection(url)) {
             Scanner sc = new Scanner(System.in);
             String nombreusuario = sc.nextLine();
-            Statement stmt = conn.createStatement();
             String sql = "insert into alumnos (nombre, edad)" +
-                    "values ('" + nombreusuario + "', 0";
-            //stmt.execute(sql);
+                    "values (?, 0)";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
             stmt.executeUpdate(sql);
             /*while (rs.next()) {
                 int id = rs.getInt("id_alumno");
